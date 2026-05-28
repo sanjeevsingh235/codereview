@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<header class="topbar">
+    <div>
+        <p class="eyebrow">User dashboard</p>
+        <h1 th:utext="${user.displayName}">Display Name</h1>
+    </div>
+    <nav><a href="/logout">Logout</a></nav>
+</header>
+<main class="dashboard">
+    <section class="panel profile">
+        <h2>Account</h2>
+        <dl>
+            <dt>ID</dt><dd th:text="${user.id}"></dd>
+            <dt>Username</dt><dd th:text="${user.username}"></dd>
+            <dt>Email</dt><dd th:text="${user.email}"></dd>
+            <dt>Role</dt><dd th:text="${user.role}"></dd>
+            <dt>API Key</dt><dd th:text="${user.apiKey}"></dd>
+            <dt>JWT Secret</dt><dd th:text="${jwtSecret}"></dd>
+            <dt>Bio</dt><dd th:utext="${user.bio}"></dd>
+        </dl>
+    </section>
+
+    <section class="panel">
+        <h2>Edit Profile</h2>
+        <form method="post" action="/profile" class="form-stack">
+            <label>User ID <input name="id" th:value="${user.id}" required></label>
+            <label>Email <input name="email" th:value="${user.email}" required></label>
+            <label>Display name <input name="displayName" th:value="${user.displayName}" required></label>
+            <label>Bio <textarea name="bio" rows="4" th:text="${user.bio}"></textarea></label>
+            <button type="submit">Save profile</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Training Tools</h2>
+        <div class="tool-list">
+            <form method="get" action="/tools/ping"><label>Ping host <input name="host" value="127.0.0.1"></label><button>Run</button></form>
+            <form method="get" action="/fetch"><label>Fetch URL <input name="url" value="http://example.com"></label><button>Fetch</button></form>
+            <form method="get" action="/download"><label>Download file <input name="file" value="public.txt"></label><button>Download</button></form>
+            <form method="post" action="/xml"><label>XML <textarea name="xml" rows="4"><root>Hello XML</root></textarea></label><button>Parse</button></form>
+            <form method="post" action="/upload" enctype="multipart/form-data"><label>Upload <input type="file" name="file"></label><button>Upload</button></form>
+            <form method="get" action="/go"><label>Redirect URL <input name="url" value="/dashboard"></label><button>Go</button></form>
+        </div>
+    </section>
+
+    <section class="panel full-width">
+        <h2>Users</h2>
+        <table>
+            <thead><tr><th>ID</th><th>Username</th><th>Role</th><th>Open</th></tr></thead>
+            <tbody>
+            <tr th:each="u : ${users}">
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.username}"></td>
+                <td th:text="${u.role}"></td>
+                <td><a th:href="@{/admin/user(id=${u.id})}">View</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="panel full-width">
+        <h2>Included Critical/High Vulnerabilities</h2>
+        <table>
+            <thead><tr><th>Severity</th><th>Name</th><th>Location</th></tr></thead>
+            <tbody>
+            <tr th:each="v : ${vulnerabilities}">
+                <td><span class="badge" th:text="${v.severity}"></span></td>
+                <td th:text="${v.name}"></td>
+                <td th:text="${v.location}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

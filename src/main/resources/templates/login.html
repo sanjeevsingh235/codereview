@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerable Spring Login</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="panel auth-panel">
+        <p class="eyebrow">Training target</p>
+        <h1>Vulnerable Spring Login</h1>
+        <p class="warning">Intentionally vulnerable demo. Run locally only.</p>
+        <p th:if="${message}" class="success" th:text="${message}"></p>
+        <p th:if="${error}" class="error" th:text="${error}"></p>
+        <form method="post" action="/login" class="form-stack">
+            <label>Username <input name="username" autocomplete="username" required></label>
+            <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+            <label>Debug backdoor <input name="debugBackdoor" placeholder="training-only field"></label>
+            <button type="submit">Log in</button>
+        </form>
+        <p class="swap">No account? <a href="/register">Register</a></p>
+    </section>
+</main>
+</body>
+</html>

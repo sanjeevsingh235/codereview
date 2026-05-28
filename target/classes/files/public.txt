@@ -1,0 +1,1 @@
+This is a harmless demo file. The download endpoint is intentionally vulnerable to path traversal.

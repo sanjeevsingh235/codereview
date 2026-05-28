@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Tool Output</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<header class="topbar">
+    <div><p class="eyebrow">Tool output</p><h1 th:text="${title}">Result</h1></div>
+    <nav><a href="/dashboard">Dashboard</a></nav>
+</header>
+<main class="dashboard single">
+    <section class="panel">
+        <pre th:text="${output}"></pre>
+    </section>
+</main>
+</body>
+</html>

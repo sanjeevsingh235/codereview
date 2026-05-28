@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="auth-page">
+<main class="auth-shell wide">
+    <section class="panel auth-panel">
+        <p class="eyebrow">New account</p>
+        <h1>Registration</h1>
+        <form method="post" action="/register" class="form-grid">
+            <label>Username <input name="username" required></label>
+            <label>Password <input name="password" type="password" required></label>
+            <label>Email <input name="email" type="email" required></label>
+            <label>Display name <input name="displayName" required></label>
+            <label class="full">Bio <textarea name="bio" rows="4"></textarea></label>
+            <label>Role <input name="role" th:value="${defaultRole}"></label>
+            <button type="submit">Create account</button>
+        </form>
+        <p class="swap"><a href="/login">Back to login</a></p>
+    </section>
+</main>
+</body>
+</html>

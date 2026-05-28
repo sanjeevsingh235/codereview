@@ -1,0 +1,4 @@
+com/example/vulnspring/AppUser.class
+com/example/vulnspring/VulnerableController.class
+com/example/vulnspring/VulnerableSpringDemoApplication.class
+com/example/vulnspring/UserRepository.class

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<header class="topbar">
+    <div><p class="eyebrow">User record</p><h1 th:text="${target.username}">User</h1></div>
+    <nav><a href="/dashboard">Dashboard</a></nav>
+</header>
+<main class="dashboard single">
+    <section class="panel profile">
+        <h2>Details</h2>
+        <dl>
+            <dt>ID</dt><dd th:text="${target.id}"></dd>
+            <dt>Username</dt><dd th:text="${target.username}"></dd>
+            <dt>Password</dt><dd th:text="${target.password}"></dd>
+            <dt>Email</dt><dd th:text="${target.email}"></dd>
+            <dt>Display name</dt><dd th:utext="${target.displayName}"></dd>
+            <dt>Bio</dt><dd th:utext="${target.bio}"></dd>
+            <dt>Role</dt><dd th:text="${target.role}"></dd>
+            <dt>API key</dt><dd th:text="${target.apiKey}"></dd>
+        </dl>
+    </section>
+</main>
+</body>
+</html>
